@@ -5,21 +5,8 @@
 public class Case{
 
 	/**
-	*	Presence du joueur
-	*	true = oui
-	*	false = non
-	*/
-	private boolean joueur;
-
-	/**
-	*	Presence d'un tapis
-	*	true = oui
-	*	false = non
-	*/
-	private boolean tapis;
-
-	/**
 	*	Couleur tapis
+	*	0 = pas de tapis
 	*	1 = rouge
 	*	2 = bleu
 	*	3 = vert
@@ -31,8 +18,29 @@ public class Case{
 	*	Constructeur, initialise les valeurs par defaut
 	*/
 	public Case(){
-		joueur = false;
-		tapis = false;
 		couleur = 0;
+		posXPion = 4; //Placer le pion au centre
+		posYPion = 4;
+
+	}
+
+	/**
+	*	Methode pour mettre un tapis sur la case
+	*	@param nb (Voir l'attribut couleur pour les differents valeur de nb)
+	*/
+	public void setCouleurTapis(int nb){
+		if(nb>0 && nb<5){
+			couleur = nb;
+		} else {
+			System.out.println("Erreur setCouleurTapis "+nb);
+		}
+	}
+
+	/**
+	*	Methode pour obtenir la couleur du tapis de la case
+	*	@return couleur qui est la couleur du tapis de la case
+	*/
+	public int getCouleurTapis(){
+		return couleur;
 	}
 }

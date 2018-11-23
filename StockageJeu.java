@@ -1,10 +1,12 @@
 
 /**
-*	Classe represenant la grille du jeu
+*	Classe represenant l'etat du jeu'
 *	@author Ranto
 */
 
 public class StockageJeu{
+	
+	
 
 	/**
 	*	Classe du jeu
@@ -21,11 +23,13 @@ public class StockageJeu{
 	*	Constructeur
 	*/
 	private StockageJeu(){
+		cases = new Case[7][7];
 		
 	}
 
 	/**
 	*	Singleton
+	*	@return jeu qui est unique
 	*/
 	public static StockageJeu initialize(){
 		if(jeu == null){
@@ -34,6 +38,8 @@ public class StockageJeu{
 
 		return jeu;
 	}
+
+	
 
 
 
