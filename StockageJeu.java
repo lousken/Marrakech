@@ -39,6 +39,9 @@ public class StockageJeu{
 		//initialise les joueurs
 		joueurs = new Joueur[nbJoueur];
 		initialiseJoueurs();
+
+		//initialise Assam
+		pion = new Assam();
 		
 	}
 
@@ -98,6 +101,14 @@ public class StockageJeu{
 			dime = payerDime(couleur,x,y-1,dime,visited);
 		}
 		return dime;
+	}
+
+	/**
+	*	Methode pour obtenir Assam
+	*	@return pion
+	*/
+	public Assam getAssam(){
+		return pion;
 	}
 
 	
