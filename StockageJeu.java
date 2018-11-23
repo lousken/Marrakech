@@ -68,6 +68,31 @@ public class StockageJeu{
 
 		return jeu;
 	}
+	
+	/**
+	*@param couleur c'est la couleur du tapis sur lequel assam est
+	*@param x on met la position x de assam
+	*@param y on met la position y de assam
+	*@param dime on met la dime a 0;
+	*@param visited on cree un tableau de booleen avec new
+	*/
+	public int payerDime(int couleur, int x, int y, int dime, boolean[][] visited){
+		dime++;
+		visited[x][y] = true;
+		if(cases[x+1][y].getCouleurTapis()==couleur && !boolean[x+1][y]){
+			dime = payerDime(couleur,x+1,y,dime,visited);
+		}
+		if(cases[x-1][y].getCouleurTapis()==couleur && !boolean[x-1][y]){
+			dime = payerDime(couleur,x-1,y,dime,visited);
+		}
+		if(cases[x][y+1].getCouleurTapis()==couleur && !boolean[x][y+1]){
+			dime = payerDime(couleur,x,y+1,dime,visited);
+		}
+		if(cases[x][y-1].getCouleurTapis()==couleur && !boolean[x][y-1]){
+			dime = payerDime(couleur,x,y-1,dime,visited);
+		}
+		return dime;
+	}
 
 	
 
