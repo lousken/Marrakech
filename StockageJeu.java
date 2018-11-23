@@ -56,14 +56,19 @@ public class StockageJeu{
 	/**
 	*	Methode pour initialiser les joueurs
 	*/
+	private void initialiseJoueurs(){
+
+	}
+
 
 	/**
 	*	Singleton
+	*	@param nb nombre de joueur
 	*	@return jeu qui est unique
 	*/
-	public static StockageJeu initialize(){
+	public static StockageJeu initialize(int nb){
 		if(jeu == null){
-			jeu = new StockageJeu();
+			jeu = new StockageJeu(nb);
 		}
 
 		return jeu;
@@ -79,16 +84,16 @@ public class StockageJeu{
 	public int payerDime(int couleur, int x, int y, int dime, boolean[][] visited){
 		dime++;
 		visited[x][y] = true;
-		if(cases[x+1][y].getCouleurTapis()==couleur && !boolean[x+1][y]){
+		if(cases[x+1][y].getCouleurTapis()==couleur && !visited[x+1][y]){
 			dime = payerDime(couleur,x+1,y,dime,visited);
 		}
-		if(cases[x-1][y].getCouleurTapis()==couleur && !boolean[x-1][y]){
+		if(cases[x-1][y].getCouleurTapis()==couleur && !visited[x-1][y]){
 			dime = payerDime(couleur,x-1,y,dime,visited);
 		}
-		if(cases[x][y+1].getCouleurTapis()==couleur && !boolean[x][y+1]){
+		if(cases[x][y+1].getCouleurTapis()==couleur && !visited[x][y+1]){
 			dime = payerDime(couleur,x,y+1,dime,visited);
 		}
-		if(cases[x][y-1].getCouleurTapis()==couleur && !boolean[x][y-1]){
+		if(cases[x][y-1].getCouleurTapis()==couleur && !visited[x][y-1]){
 			dime = payerDime(couleur,x,y-1,dime,visited);
 		}
 		return dime;
