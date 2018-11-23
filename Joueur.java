@@ -1,5 +1,5 @@
 /**
-*Classe Joueur sert a contenir les informations sur les différents joueurs de la partie
+*Classe Joueur sert a contenir les informations sur les differents joueurs de la partie
 *@author Groupe Ranto
 */
 public class Joueur{
@@ -10,7 +10,7 @@ public class Joueur{
   private int numJoueur;
 
   /**
-  *L'argent que possède le joueurs
+  *L'argent que possede le joueurs
   */
   private int monnaie;
 
@@ -21,9 +21,9 @@ public class Joueur{
 
   /**
   *Le constructeur fait correspondre les variables au dessus
-  *@param numJoueur
-  *@param monnaie
-  *@param tapisRest
+  *@param n Numero du joueur
+  *@param m Monaie du joueur
+  *@param t Nombre de tapis restant
   */
   public Joueur(int n, int m, int t){
     this.numJoueur=n;

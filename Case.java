@@ -19,9 +19,6 @@ public class Case{
 	*/
 	public Case(){
 		couleur = 0;
-		posXPion = 4; //Placer le pion au centre
-		posYPion = 4;
-
 	}
 
 	/**
