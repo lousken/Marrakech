@@ -75,6 +75,7 @@ public class StockageJeu{
 	}
 	
 	/**
+	*Methode pour calculer la dime
 	*@param couleur c'est la couleur du tapis sur lequel assam est
 	*@param x on met la position x de assam
 	*@param y on met la position y de assam
