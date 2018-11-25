@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.net.URL;
 import java.lang.*;
 
-public class Graphique extends JComponent {
+public class Graphique extends JComponent{
 
   private StockageJeu stock;
   private Assam assam;
@@ -28,9 +28,8 @@ public class Graphique extends JComponent {
       g.drawLine(i*(this.getWidth()/9), 0, i*(this.getWidth()/9), this.getHeight());
     }
 
-    url = this.getClass().getResource("arabe1.png");
+    url = this.getClass().getResource("arabe"+assam.getDirection()+".png");
     Image arabe = new ImageIcon(url).getImage();
     g.drawImage(arabe,assam.getXPion()*(this.getWidth()/9), assam.getYPion()*(this.getHeight()/9), this.getWidth()/9,this.getHeight()/9, null, this);
-
   }
 }

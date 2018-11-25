@@ -11,7 +11,6 @@ public class Assam{
 	*	2 = droite
 	*	3 = haut
 	*	4 = bas
-	*	0 = aucune
 	*/
 	private static int direction;
 
@@ -26,7 +25,7 @@ public class Assam{
 	public Assam(){
 		posXPion = 4;
 		posYPion = 4;
-		direction = 0;
+		direction = 4;
 	}
 
 
@@ -38,8 +37,10 @@ public class Assam{
 	public static void changePosXPion(boolean b){
 		if(b){
 			posXPion++;
+			direction=2;
 		} else {
 			posXPion--;
+			direction=1;
 		}
 
 		if(posXPion > 7 || posXPion < 1){
@@ -56,8 +57,10 @@ public class Assam{
 	public static void changePosYPion(boolean b){
 		if(b){
 			posYPion++;
+			direction=4;
 		} else {
 			posYPion--;
+			direction=3;
 		}
 
 		if(posYPion > 7 || posYPion < 1){
@@ -78,8 +81,10 @@ public class Assam{
 					posXPion--;
 					//
 				}
-			} else {
-				//
+				direction=4;
+			}
+			else {
+				direction=1;
 			}
 			posYPion++;
 		}
@@ -92,10 +97,44 @@ public class Assam{
 					posXPion--;
 					//
 				}
-			} else {
-				//
+				direction=3;
+			}
+			else {
+				direction=2;
 			}
 			posYPion--;
+		}
+		else if(posXPion == 0){
+			if(posYPion < 7){
+				if(posYPion%2 == 1){
+					posYPion++;
+					//
+				} else {
+					posYPion--;
+					//
+				}
+				direction=2;
+			}
+			else {
+				direction=3;
+			}
+			posXPion++;
+		}
+		else if(posXPion == 8){
+			if(posYPion > 1){
+				if(posYPion%2 == 0){
+					posYPion++;
+					//
+				} else{
+					posYPion--;
+					//
+				}
+				direction=1;
+			}
+			else {
+				direction=4;
+			}
+			posXPion--;
 		}
 	}
 
@@ -113,5 +152,13 @@ public class Assam{
 	*/
 	public int getYPion(){
 		return posYPion;
+	}
+
+	/**
+	* Methode pour obtener Direction
+	*@return direction
+	*/
+	public int getDirection(){
+		return this.direction;
 	}
 }
