@@ -1,15 +1,37 @@
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+* Classe pour gerer les deplacments de Assam au clavier
+*/
+
 public class Clavier implements KeyListener{
+
+  /*
+  * 
+  */
   Assam pion;
+
+  /*
+  *
+  */
   Graphique g;
 
+  /**
+  * Constructeur
+  * @param p le pion
+  * @param g
+  */
   public Clavier(Assam p, Graphique g){
     this.pion = p;
     this.g = g;
   }
 
+
+  /**
+  * Methode pour gerer les deplacements de Assam avec les fleches dirrectionnelles
+  * @param e
+  */
   @Override
   public void keyPressed(KeyEvent e){
     if(e.getKeyCode() == KeyEvent.VK_LEFT){

@@ -8,11 +8,10 @@ import java.awt.*;
 public class Test {
 	public static void main(String[] args){
 		StockageJeu jeu = StockageJeu.initialize(3);
-		Assam pion = jeu.getAssam();
 		Fenetre f = new Fenetre();
-		Graphique G = new Graphique(jeu, pion);
+		Graphique G = new Graphique(jeu);
 		f.add(G);
-		f.addKeyListener(new Clavier(pion,G));
+		f.addKeyListener(new Clavier(jeu.getAssam(),G));
 		// while(true){
 		// 	for(int i = 0; i < 7; i++){
 		// 		for (int j = 0; j < 7; j++){

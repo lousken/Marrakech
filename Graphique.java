@@ -6,15 +6,30 @@ import java.awt.event.*;
 import java.net.URL;
 import java.lang.*;
 
+/**
+* Classe pour afficher le jeu dans la fentre
+*/
+
 public class Graphique extends JComponent{
 
+  /*
+  * Objet contenant toutes les donnees du jeu
+  */
   private StockageJeu stock;
+
+  /*
+  * Pion du jeu
+  */
   private Assam assam;
 
-  public Graphique(StockageJeu j, Assam a) {
+  /*
+  * Constructeur
+  * @param j Contient toutes les donnes du jeu
+  */
+  public Graphique(StockageJeu j) {
     super();
     this.stock = j;
-    this.assam = a;
+    this.assam = j.getAssam();
   }
 
   @Override
