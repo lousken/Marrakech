@@ -161,4 +161,35 @@ public class Assam{
 	public int getDirection(){
 		return this.direction;
 	}
+
+	/**
+	*	Methode pour deplacer Assam de n case
+	*	@param n Nombre de deplacement
+	*	@param d Direction de Assam 
+	*	@return false quand Assam ne peut pas se deplacer
+	*	@return true quand assam peut se deplacer
+	*/
+	public boolean deplacerAssam(int n, int d){
+
+		//pour ne pas faire de demi tour ou erreur de d
+		if(direction == 1 &&  d == 2 || direction == 2 && d == 1 || direction == 3 && d == 4 || direction == 4 && d == 3 || d<1 || d>4){
+			return false;
+		}
+
+		direction = d;
+
+		for(int i = 0; i<n; i++){
+			if(direction == 1){
+				changePosXPion(false);
+			} else if(direction == 2){
+				changePosXPion(true);
+			} else if(direction == 3){
+				changePosYPion(true);
+			} else {
+				changePosYPion(false);
+			}
+		}
+
+		return true;
+	}
 }
