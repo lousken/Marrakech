@@ -47,4 +47,6 @@ public class Graphique extends JComponent{
     Image arabe = new ImageIcon(url).getImage();
     g.drawImage(arabe,assam.getXPion()*(this.getWidth()/9), assam.getYPion()*(this.getHeight()/9), this.getWidth()/9,this.getHeight()/9, null, this);
   }
+
+  
 }

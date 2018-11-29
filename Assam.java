@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Assam{
 
 	/**
@@ -184,12 +186,14 @@ public class Assam{
 			} else if(direction == 2){
 				changePosXPion(true);
 			} else if(direction == 3){
-				changePosYPion(true);
-			} else {
 				changePosYPion(false);
+			} else {
+				changePosYPion(true);
 			}
 		}
 
 		return true;
 	}
+
+	
 }

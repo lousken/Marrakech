@@ -2,6 +2,7 @@ import java.lang.Integer;
 import java.util.Scanner;
 import java.util.Random;
 
+
 /**
 *	Classe pour gerer une partie
 */
@@ -29,13 +30,15 @@ public class Partie{
 		
 	}
 
-	private int de(){
+	public static int de(){
 		Random rand = new Random();
 		int nombreR = rand.nextInt()%4;
+		if(nombreR<0){
+			nombreR = -nombreR;
+		}
+		nombreR++;
 		return nombreR;
 
 	}
-
-
 
 }
