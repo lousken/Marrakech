@@ -36,6 +36,9 @@ public class Test {
 				System.out.print("\n");
 			}
 
+			jeu.cases[3][2].setCouleurTapis(1);
+
+
 			String[] direction = {"G", "D", "H", "B"};
 			System.out.println("Direction de assam: "+direction[pion.getDirection()-1]);
 			int n = de();
@@ -46,6 +49,7 @@ public class Test {
 				while(true){
 					Scanner sc = new Scanner(System.in);
 		 			String tmp = sc.nextLine();
+		 			
 					if(tmp.equals("g")){
 						d=1;
 						break;
@@ -65,6 +69,10 @@ public class Test {
 				}
 
 				if(pion.deplacerAssam(n, d)){
+					System.out.println("\n\n");
+					System.out.println("Assam est en pos " + pion.getXPion() + "  " + pion.getYPion());
+					System.out.println("Assam est sur un tapis :" + jeu.cases[pion.getYPion()-1][pion.getXPion()-1].getCouleurTapis());
+		 			
 					break;
 				} else {
 					System.out.println("Vous ne pouvez pas choisir cette direction!");
@@ -105,15 +113,26 @@ public class Test {
 	}
 
 	public static int de(){
-		Random rand = new Random();
-		int nombreR = rand.nextInt()%4;
-		if(nombreR<0){
-			nombreR = -nombreR;
-		}
-		nombreR++;
-		return nombreR;
+    Random rand = new Random();
+    int nombreR = rand.nextInt()%6;
+    if(nombreR<0){
+      nombreR = -nombreR;
+    }
+    nombreR ++;
 
-	}
+    if(nombreR == 2 || nombreR == 3){
+      nombreR = 2;
+    }
+    else if(nombreR == 4 || nombreR == 5){
+      nombreR = 3;
+    } else if(nombreR == 6){
+      nombreR = 4;
+    } else {
+      nombreR = 1;
+    }
+    return nombreR;
+
+  }
 }
 
 
