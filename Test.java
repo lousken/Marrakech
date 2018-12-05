@@ -30,13 +30,11 @@ public class Test {
 					} else {
 						System.out.print(jeu.cases[i][j].getCouleurTapis()+" ");
 					}
-
-
 				}
 				System.out.print("\n");
 			}
 
-			jeu.cases[3][2].setCouleurTapis(1);
+		//	jeu.cases[3][2].setCouleurTapis(1);
 
 
 			String[] direction = {"G", "D", "H", "B"};
@@ -69,14 +67,17 @@ public class Test {
 				}
 
 				if(pion.deplacerAssam(n, d)){
+
 					System.out.println("\n\n");
 					System.out.println("Assam est en pos " + pion.getXPion() + "  " + pion.getYPion());
-					System.out.println("Assam est sur un tapis :" + jeu.cases[pion.getYPion()-1][pion.getXPion()-1].getCouleurTapis());
-		 			
+					System.out.println("Assam est sur un tapis :" + jeu.cases[pion.getYPion()-1][pion.getXPion()-1].getCouleurTapis());		
 					break;
 				} else {
 					System.out.println("Vous ne pouvez pas choisir cette direction!");
 				}
+
+
+
 
 			}
 
@@ -133,6 +134,36 @@ public class Test {
     return nombreR;
 
   }
+
+
+	private int getDirection(){
+	  	int d;
+	  	while(true){
+	  	System.out.println("Entrez la direction de la pose du tapis : ")
+			Scanner sc = new Scanner(System.in);
+				String tmp = sc.nextLine();
+				
+			if(tmp.equals("g")){
+				d=1;
+				break;
+			} else if(tmp.equals("d")){
+				d=2;
+				break;
+			} else if(tmp.equals("h")){
+				d=3;
+				break;
+			} else if(tmp.equals("b")){
+				d=4;
+				break;
+			} else {
+				System.out.println("Tapez g, d, h, b");
+			}
+		}
+		return d;
+	}
+ 
+
+
 }
 
 
@@ -149,3 +180,7 @@ class Fenetre extends JFrame{
 		this.setVisible(true);
 	}
 }
+
+
+
+
