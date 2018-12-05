@@ -114,11 +114,11 @@ public class StockageJeu{
 		}
 	}
 
-	private void enleverTapisJoueur(Joueur j){
+	private void enleverTapisJoueur(Joueur joueur){
 		for(int i = 0; i < 7; i++){
 			for(int j = 0; j < 7; j++){
-				if(case[i][j].getCouleurTapis() == j.getCouleur()){
-					case[i][j].setCouleurTapis(0);
+				if(cases[i][j].getCouleurTapis() == joueur.getCouleur()){
+					cases[i][j].setCouleurTapis(0);
 				}
 			}
 		}

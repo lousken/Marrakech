@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
+import java.lang.ArrayIndexOutOfBoundsException;
 
 public class Test {
 
@@ -22,7 +23,64 @@ public class Test {
 
 	private static void fonctionABen(){
 		while(true){
-			for(int i = 0; i < 7; i++){
+			afficherJeu();
+
+			String[] direction = {"G", "D", "H", "B"};
+			System.out.println("Direction de assam: "+direction[pion.getDirection()-1]);
+			int n = de();
+			System.out.println("On lance le de, vous obtenez: "+ n+"\nChoisissez une direction sans faire demi tour!");
+			deplacerAssam(n);
+
+
+			
+		}
+	}
+
+	private static void deplacerAssam(int n){
+		while(true){
+			int d;
+			
+			d = obtenirDirection();
+			if(pion.deplacerAssam(n, d)){
+
+				System.out.println("\n\n");
+				System.out.println("Assam est en pos " + pion.getXPion() + "  " + pion.getYPion());
+				System.out.println("Assam est sur un tapis :" + jeu.cases[pion.getYPion()-1][pion.getXPion()-1].getCouleurTapis());	
+				afficherJeu();
+				while(!poserTapis());
+	
+				break;	
+			} else {
+				System.out.println("Vous ne pouvez pas choisir cette direction!");
+			}
+
+
+
+
+		}
+	}
+
+	private static int obtenirDirection(){
+		while(true){
+				Scanner sc = new Scanner(System.in);
+	 			String tmp = sc.nextLine();
+	 			
+				if(tmp.equals("g")){
+					return 1;
+				} else if(tmp.equals("d")){
+					return 2;
+				} else if(tmp.equals("h")){
+					return 3;
+				} else if(tmp.equals("b")){
+					return 4;
+				} else {
+					System.out.println("Tapez g, d, h, b");
+				}
+			} 
+	}
+
+	private static void afficherJeu(){
+		for(int i = 0; i < 7; i++){
 				for (int j = 0; j < 7; j++){
 
 					if(pion.getXPion()-1 == j && pion.getYPion()-1 == i){
@@ -33,77 +91,6 @@ public class Test {
 				}
 				System.out.print("\n");
 			}
-
-		//	jeu.cases[3][2].setCouleurTapis(1);
-
-
-			String[] direction = {"G", "D", "H", "B"};
-			System.out.println("Direction de assam: "+direction[pion.getDirection()-1]);
-			int n = de();
-			System.out.println("On lance le de, vous obtenez: "+ n+"\nChoisissez une direction sans faire demi tour!");
-
-			while(true){
-				int d;
-				while(true){
-					Scanner sc = new Scanner(System.in);
-		 			String tmp = sc.nextLine();
-		 			
-					if(tmp.equals("g")){
-						d=1;
-						break;
-					} else if(tmp.equals("d")){
-						d=2;
-						break;
-					} else if(tmp.equals("h")){
-						d=3;
-						break;
-					} else if(tmp.equals("b")){
-						d=4;
-						break;
-
-					} else {
-						System.out.println("Tapez g, d, h, b");
-					}
-				}
-
-				if(pion.deplacerAssam(n, d)){
-
-					System.out.println("\n\n");
-					System.out.println("Assam est en pos " + pion.getXPion() + "  " + pion.getYPion());
-					System.out.println("Assam est sur un tapis :" + jeu.cases[pion.getYPion()-1][pion.getXPion()-1].getCouleurTapis());		
-					break;
-				} else {
-					System.out.println("Vous ne pouvez pas choisir cette direction!");
-				}
-
-
-
-
-			}
-
-
-
-			/*while(true){
-				Scanner sc = new Scanner(System.in);
-	 			String tmp = sc.nextLine();
-				if(tmp.equals("g")){
-					pion.changePosXPion(false);
-					break;
-				} else if(tmp.equals("d")){
-					pion.changePosXPion(true);
-					break;
-				} else if(tmp.equals("h")){
-					pion.changePosYPion(false);
-					break;
-				} else if(tmp.equals("b")){
-					pion.changePosYPion(true);
-					break;
-
-				} else {
-					System.out.println("Tapez g, d, h, b");
-				}
-			}*/
-		}
 	}
 
 	private static void fonctionASo(){
@@ -114,56 +101,103 @@ public class Test {
 	}
 
 	public static int de(){
-    Random rand = new Random();
-    int nombreR = rand.nextInt()%6;
-    if(nombreR<0){
-      nombreR = -nombreR;
-    }
-    nombreR ++;
+	    Random rand = new Random();
+	    int nombreR = rand.nextInt()%6;
+	    if(nombreR<0){
+	      nombreR = -nombreR;
+	    }
+	    nombreR ++;
 
-    if(nombreR == 2 || nombreR == 3){
-      nombreR = 2;
-    }
-    else if(nombreR == 4 || nombreR == 5){
-      nombreR = 3;
-    } else if(nombreR == 6){
-      nombreR = 4;
-    } else {
-      nombreR = 1;
-    }
-    return nombreR;
+	    if(nombreR == 2 || nombreR == 3){
+	      nombreR = 2;
+	    }
+	    else if(nombreR == 4 || nombreR == 5){
+	      nombreR = 3;
+	    } else if(nombreR == 6){
+	      nombreR = 4;
+	    } else {
+	      nombreR = 1;
+	    }
+	    return nombreR;
 
   }
 
+	private  static boolean poserTapis(){
+		System.out.println("Choisisser une premiere case pour poser tapis");
+	  	int premiereCaseTapis = obtenirDirection();
+	  	int direction = premiereCaseTapis;
+	  	int posXTapis = 0, posYTapis = 0;
 
-	private int getDirection(){
-	  	int d;
+	  	try{
+		  	if(premiereCaseTapis == 1){
+		  		jeu.cases[pion.getYPion()-1][pion.getXPion()-2].setCouleurTapis(1);
+		  		posXTapis = pion.getXPion()-2;
+		  		posYTapis = pion.getYPion()-1;
+		  	} 
+
+		  	else if(premiereCaseTapis == 2){
+		  		jeu.cases[pion.getYPion()-1][pion.getXPion()].setCouleurTapis(1);
+		  		posXTapis = pion.getXPion();
+		  		posYTapis = pion.getYPion()-1;
+		  	}
+
+		  	else if(premiereCaseTapis == 3){
+		  		jeu.cases[pion.getYPion()-2][pion.getXPion()-1].setCouleurTapis(1);
+		  		posYTapis = pion.getYPion()-2;
+		  		posXTapis = pion.getXPion()-1;
+		  	} 
+
+		  	else {
+		  		jeu.cases[pion.getYPion()][pion.getXPion()-1].setCouleurTapis(1);
+		  		posYTapis = pion.getYPion();
+		  		posXTapis = pion.getXPion()-1;
+		  	}
+	  	} catch (ArrayIndexOutOfBoundsException e){
+	  		System.out.println("Vous ne pouvez pas placer un tapis en dehors du jeu");
+	  		return false;
+	  	}
+
+	  	
+
+
+	  	afficherJeu();
+	  	System.out.println("Choisissez la deuxieme case");
+
 	  	while(true){
-	  	System.out.println("Entrez la direction de la pose du tapis : ")
-			Scanner sc = new Scanner(System.in);
-				String tmp = sc.nextLine();
-				
-			if(tmp.equals("g")){
-				d=1;
-				break;
-			} else if(tmp.equals("d")){
-				d=2;
-				break;
-			} else if(tmp.equals("h")){
-				d=3;
-				break;
-			} else if(tmp.equals("b")){
-				d=4;
-				break;
+	  		int d = obtenirDirection();
+	  		//pour ne pas faire de demi tour ou erreur de d
+			if(direction == 1 &&  d == 2 || direction == 2 && d == 1 || direction == 3 && d == 4 || direction == 4 && d == 3 || d<1 || d>4){
+				System.out.println("Impossible de choisir cette case!");
 			} else {
-				System.out.println("Tapez g, d, h, b");
+				try{
+				  	if(d == 1){
+				  		jeu.cases[posYTapis][posXTapis-1].setCouleurTapis(1);
+				  	} 
+
+				  	else if(d == 2){
+				  		jeu.cases[posYTapis][posXTapis+1].setCouleurTapis(1);
+				  	}
+
+				  	else if(d == 3){
+				  		jeu.cases[posYTapis-1][posXTapis].setCouleurTapis(1);
+				  	} 
+
+				  	else {
+				  		jeu.cases[posYTapis+1][posXTapis].setCouleurTapis(1);
+			  		}
+			  		break;
+	  			} catch (ArrayIndexOutOfBoundsException e){
+			  		System.out.println("Vous ne pouvez pas placer le second tapis en dehors du jeu");
+	  			}
+
 			}
-		}
-		return d;
+
+	  	}
+
+	  	return true;
+
+
 	}
- 
-
-
 }
 
 
@@ -180,7 +214,3 @@ class Fenetre extends JFrame{
 		this.setVisible(true);
 	}
 }
-
-
-
-
