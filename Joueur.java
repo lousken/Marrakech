@@ -20,6 +20,11 @@ public class Joueur{
   private int tapisRest;
 
   /**
+  *
+  */
+  private int couleur;
+
+  /**
   *Le constructeur fait correspondre les variables au dessus
   *@param n Numero du joueur
   *@param m Monaie du joueur
@@ -77,6 +82,20 @@ public class Joueur{
   */
   public void setTapisRest(int t){
    this.tapisRest = t;
+  }
+
+  /**
+  *
+  */
+  public int getCouleur(){
+    return couleur;
+  }
+
+  /**
+  *
+  */
+  public void setCouleur(int c){
+    couleur = c;
   }
 
 }

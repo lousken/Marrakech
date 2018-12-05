@@ -35,14 +35,14 @@ public class StockageJeu{
 		//initialise la grille
 		cases = new Case[7][7];
 		initialiseCases();
-	
+
 		//initialise les joueurs
 		joueurs = new Joueur[nbJoueur];
 		initialiseJoueurs();
 
 		//initialise Assam
 		pion = new Assam();
-		
+
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class StockageJeu{
 
 		return jeu;
 	}
-	
+
 	/**
 	*Methode pour calculer la dime
 	*@param couleur c'est la couleur du tapis sur lequel assam est
@@ -103,6 +103,27 @@ public class StockageJeu{
 		return dime;
 	}
 
+	public void payerVraimentDime(Joueur payeur, Joueur paye, int dime){
+		if(dime>=payeur.getMonnaie()){
+			paye.setMonnaie(paye.getMonnaie()+payeur.getMonnaie());
+			payeur.setMonnaie(0);
+		}
+		else{
+			paye.setMonnaie(paye.getMonnaie()+dime);
+			payeur.setMonnaie(payeur.getMonnaie()-dime);
+		}
+	}
+
+	private void enleverTapisJoueur(Joueur j){
+		for(int i = 0; i < 7; i++){
+			for(int j = 0; j < 7; j++){
+				if(case[i][j].getCouleurTapis() == j.getCouleur()){
+					case[i][j].setCouleurTapis(0);
+				}
+			}
+		}
+	}
+
 	/**
 	*	Methode pour obtenir Assam
 	*	@return pion
@@ -111,7 +132,7 @@ public class StockageJeu{
 		return pion;
 	}
 
-	
+
 
 
 
