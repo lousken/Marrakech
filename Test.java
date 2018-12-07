@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.lang.ArrayIndexOutOfBoundsException;
 
+import Jeu.*;
+import IHM.*;
+
 public class Test {
 
 
@@ -20,6 +23,7 @@ public class Test {
 		
 
 	}
+
 
 	private static void fonctionABen(){
 		while(true){
@@ -60,6 +64,10 @@ public class Test {
 		}
 	}
 
+
+	/**
+	*
+	*/
 	private static int obtenirDirection(){
 		while(true){
 				Scanner sc = new Scanner(System.in);
@@ -79,6 +87,7 @@ public class Test {
 			} 
 	}
 
+	
 	private static void afficherJeu(){
 		for(int i = 0; i < 7; i++){
 				for (int j = 0; j < 7; j++){
