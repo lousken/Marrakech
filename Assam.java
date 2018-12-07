@@ -9,6 +9,7 @@ public class Assam{
 
 	/**
 	*	Direction de Assam
+	*	0 = aucune direction
 	*	1 = gauche
 	*	2 = droite
 	*	3 = haut
@@ -27,7 +28,7 @@ public class Assam{
 	public Assam(){
 		posXPion = 4;
 		posYPion = 4;
-		direction = 4;
+		direction = 0;
 	}
 
 

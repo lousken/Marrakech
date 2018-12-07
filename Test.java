@@ -25,8 +25,8 @@ public class Test {
 		while(true){
 			afficherJeu();
 
-			String[] direction = {"G", "D", "H", "B"};
-			System.out.println("Direction de assam: "+direction[pion.getDirection()-1]);
+			String[] direction = {"Aucune", "G", "D", "H", "B"};
+			System.out.println("Direction de assam: "+direction[pion.getDirection()]);
 			int n = de();
 			System.out.println("On lance le de, vous obtenez: "+ n+"\nChoisissez une direction sans faire demi tour!");
 			deplacerAssam(n);
